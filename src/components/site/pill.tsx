@@ -61,7 +61,7 @@ export function Tag({
 /** Visible marker for content Phuong Anh still needs to supply. */
 export function Fill({ children }: { children: ReactNode }) {
   return (
-    <span className="mx-0.5 inline rounded-md border border-dashed border-chocolate/40 bg-butter/70 px-1.5 py-0.5 font-mono text-[0.72em] tracking-wide text-chocolate">
+    <span className="mx-0.5 inline rounded-md border border-dashed border-chocolate/40 bg-butter/70 px-1.5 py-0.5 align-middle font-mono text-[0.72rem] leading-normal tracking-wide text-chocolate">
       to add: {children}
     </span>
   );

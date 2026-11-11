@@ -207,10 +207,10 @@
   padding: calc(var(--r) * 1.8);
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
-    radial-gradient(var(--r) at var(--r) var(--r), #0000 97%, #000) calc(var(--r) * -1) calc(var(--r) * -1) / calc(var(--r) * 2) calc(var(--r) * 2) round;
+    radial-gradient(calc(var(--r) * 0.62) at var(--r) var(--r), #0000 96%, #000) calc(var(--r) * -1) calc(var(--r) * -1) / calc(var(--r) * 2) calc(var(--r) * 2) round;
   mask:
     linear-gradient(#000 0 0) content-box,
-    radial-gradient(var(--r) at var(--r) var(--r), #0000 97%, #000) calc(var(--r) * -1) calc(var(--r) * -1) / calc(var(--r) * 2) calc(var(--r) * 2) round;
+    radial-gradient(calc(var(--r) * 0.62) at var(--r) var(--r), #0000 96%, #000) calc(var(--r) * -1) calc(var(--r) * -1) / calc(var(--r) * 2) calc(var(--r) * 2) round;
 }
 
 /* ---------- folder tab card ---------- */

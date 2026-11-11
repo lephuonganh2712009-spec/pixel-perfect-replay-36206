@@ -42,7 +42,7 @@ export function Hero() {
           <div className="tilt relative bg-cream p-3 pb-14 shadow-lift" style={{ "--tilt": "-4deg" } as CSSProperties}>
             <Tape className="-top-3 left-1/2 -translate-x-1/2" tone="powder" tilt={-3} />
             <ImagePlaceholder label="Portrait of Phuong Anh" ratio="aspect-[4/5]" />
-            <p className="absolute bottom-4 left-0 right-0 text-center font-display text-2xl italic">Phuong Anh, Hanoi</p>
+            <p className="absolute bottom-4 left-0 right-0 pr-5 text-right font-display text-2xl italic">Phuong Anh, Hanoi</p>
           </div>
           <PaperClip className="absolute -left-4 -top-8 rotate-[-12deg]" />
           <PostageStamp className="absolute -right-8 -top-6 w-28 sm:-right-14" tilt={9}>

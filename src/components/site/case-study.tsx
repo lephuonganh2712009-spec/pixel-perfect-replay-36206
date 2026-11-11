@@ -241,7 +241,7 @@ export function CaseStudyPage({ cs }: { cs: CaseStudy }) {
               What it <em>moved</em>
             </h2>
           </Reveal>
-          <div className="grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 lg:grid-cols-5 lg:gap-6">
+          <div className={cn("grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 lg:gap-6", cs.results.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-5")}>
             {cs.results.map((r, i) => (
               <Reveal key={i} delay={i * 80}>
                 <StickyNote tone={r.tone} tilt={NOTE_TILTS[i % NOTE_TILTS.length] ?? 0} className="flex min-h-48 flex-col justify-between">
@@ -299,7 +299,7 @@ export function CaseStudyPage({ cs }: { cs: CaseStudy }) {
               Lessons I&apos;m <em>keeping</em>
             </h2>
           </Reveal>
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className={cn("grid gap-8", cs.lessons.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3")}>
             {cs.lessons.map((l, i) => (
               <Reveal key={l} delay={i * 100}>
                 <div
