@@ -1,7 +1,7 @@
 export const SITE = {
   name: "Phuong Anh Le",
   email: "lephuonganh2712009@gmail.com",
-  cvUrl: "/cv.pdf",
+  cvUrl: "/CV_Le_Phuong_Anh.pdf",
 };
 
 export const NAV_LINKS = [

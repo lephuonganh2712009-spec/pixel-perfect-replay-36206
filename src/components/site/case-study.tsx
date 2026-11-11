@@ -35,14 +35,23 @@ export function CaseStudyPage({ cs }: { cs: CaseStudy }) {
       {/* 1. Hero */}
       <header className="container-page grid items-center gap-14 pb-20 pt-14 md:pt-20 lg:grid-cols-[1fr_1.15fr]">
         <Reveal>
-          <Link to="/" hash="ventures" className="micro mb-8 inline-block opacity-70 hover:opacity-100">
+          <Link
+            to="/"
+            hash="ventures"
+            className="micro mb-8 inline-block opacity-70 hover:opacity-100"
+          >
             ← Back to ventures
           </Link>
           <p className="micro mb-5">({cs.roleLabel})</p>
           <h1 className="text-7xl md:text-[7rem] md:leading-[0.9]">{cs.name}</h1>
           <p className="mt-5 font-display text-3xl italic leading-snug md:text-4xl">{cs.tagline}</p>
           <p className="mt-6 max-w-lg text-lg text-muted-foreground">{cs.intro}</p>
-          <a href={cs.liveUrl} target="_blank" rel="noreferrer" className={cn(pillVariants({ size: "lg" }), "mt-9")}>
+          <a
+            href={cs.liveUrl}
+            target="_blank"
+            rel="noreferrer"
+            className={cn(pillVariants({ size: "lg" }), "mt-9")}
+          >
             Visit live site <ArrowUpRight className="h-4 w-4" />
           </a>
         </Reveal>
@@ -101,15 +110,22 @@ export function CaseStudyPage({ cs }: { cs: CaseStudy }) {
                   <ul className="divide-y divide-chocolate/15">
                     {group.items.map((item, ii) => (
                       <li key={ii} className="flex items-baseline gap-5 py-4 first:pt-1 last:pb-1">
-                        <CountUp value={item.value} className="w-24 shrink-0 font-display text-5xl leading-none" />
+                        <CountUp
+                          value={item.value}
+                          className="w-24 shrink-0 font-display text-5xl leading-none"
+                        />
                         <div>
                           <p className="text-lg leading-snug">{item.label}</p>
-                          {item.source && <p className="mt-1 text-xs italic opacity-60">Source: {item.source}</p>}
+                          {item.source && (
+                            <p className="mt-1 text-xs italic opacity-60">Source: {item.source}</p>
+                          )}
                         </div>
                       </li>
                     ))}
                   </ul>
-                  {group.source && <p className="mt-4 text-xs italic opacity-60">Source: {group.source}</p>}
+                  {group.source && (
+                    <p className="mt-4 text-xs italic opacity-60">Source: {group.source}</p>
+                  )}
                 </FolderMini>
               </Reveal>
             ))}
@@ -143,27 +159,30 @@ export function CaseStudyPage({ cs }: { cs: CaseStudy }) {
               const flip = i % 2 === 1;
               return (
                 <Reveal key={f.title} className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
-                  <div className={cn(flip && "md:order-2")}>
-                    {f.shot ? (
-                      <BrowserFrame url={host} tilt={flip ? 2 : -2} tapeTone={flip ? "sage" : "butter"}>
-                        {f.image ? (
-                          <Screenshot src={f.image} alt={`${cs.name} — ${f.shot}`} />
-                        ) : (
-                          <ImagePlaceholder label={f.shot} />
-                        )}
-                      </BrowserFrame>
-                    ) : (
-                      <StickyNote tone={flip ? "powder" : "butter"} tilt={flip ? 2 : -2} className="mx-auto max-w-sm !p-10 text-center">
-                        <PaperClip className="absolute -top-8 left-8 h-16 w-6 -rotate-6" />
-                        <p className="micro mb-3 opacity-70">(Feature {String(i + 1).padStart(2, "0")})</p>
-                        <p className="font-display text-4xl italic leading-tight">{f.title}</p>
-                      </StickyNote>
-                    )}
-                  </div>
-                  <div className={cn(flip && "md:order-1")}>
+                  {/* Features without a screenshot are text-only (no title-repeating sticky note). */}
+                  {f.shot && (
+                    <div className={cn(flip && "md:order-2")}>
+                      {
+                        <BrowserFrame
+                          url={host}
+                          tilt={flip ? 2 : -2}
+                          tapeTone={flip ? "sage" : "butter"}
+                        >
+                          {f.image ? (
+                            <Screenshot src={f.image} alt={`${cs.name} — ${f.shot}`} />
+                          ) : (
+                            <ImagePlaceholder label={f.shot} />
+                          )}
+                        </BrowserFrame>
+                      }
+                    </div>
+                  )}
+                  <div className={cn(flip && "md:order-1", !f.shot && "md:col-span-2")}>
                     <p className="micro mb-3 opacity-70">({String(i + 1).padStart(2, "0")})</p>
                     <h3 className="text-4xl md:text-5xl">{f.title}</h3>
-                    <p className="mt-5 max-w-md text-lg leading-relaxed text-muted-foreground">{f.body}</p>
+                    <p className="mt-5 max-w-md text-lg leading-relaxed text-muted-foreground">
+                      {f.body}
+                    </p>
                   </div>
                 </Reveal>
               );
@@ -231,7 +250,9 @@ export function CaseStudyPage({ cs }: { cs: CaseStudy }) {
               {cs.gtm.items.map((item, i) => (
                 <Reveal key={item.title} delay={i * 90}>
                   <li className="relative h-full rounded-xl border-[1.5px] border-chocolate bg-cream p-6 shadow-note">
-                    <span className="font-display text-6xl italic leading-none text-blue">{i + 1}</span>
+                    <span className="font-display text-6xl italic leading-none text-blue">
+                      {i + 1}
+                    </span>
                     <h3 className="mt-3 text-3xl">{item.title}</h3>
                     <p className="mt-3 text-[0.95rem] text-muted-foreground">{item.body}</p>
                   </li>
@@ -252,7 +273,10 @@ export function CaseStudyPage({ cs }: { cs: CaseStudy }) {
                         </span>
                       </div>
                       {i < 3 && (
-                        <ArrowRight className="absolute right-[-1.4rem] top-14 hidden h-6 w-6 md:block" aria-hidden />
+                        <ArrowRight
+                          className="absolute right-[-1.4rem] top-14 hidden h-6 w-6 md:block"
+                          aria-hidden
+                        />
                       )}
                       <h3 className="text-3xl">{s.title}</h3>
                       <p className="mt-2 max-w-[14rem] text-muted-foreground">{s.body}</p>
@@ -274,10 +298,28 @@ export function CaseStudyPage({ cs }: { cs: CaseStudy }) {
               What it <em>moved</em>
             </h2>
           </Reveal>
-          <div className={cn("grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 lg:gap-6", cs.results.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-5")}>
+          <div
+            className={cn(
+              "grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 lg:gap-6",
+              { 3: "lg:grid-cols-3", 4: "lg:grid-cols-4" }[cs.results.length] ?? "lg:grid-cols-5",
+            )}
+          >
             {cs.results.map((r, i) => (
-              <Reveal key={i} delay={i * 80}>
-                <StickyNote tone={r.tone} tilt={NOTE_TILTS[i % NOTE_TILTS.length] ?? 0} className="flex min-h-48 flex-col justify-between">
+              <Reveal
+                key={i}
+                delay={i * 80}
+                // Odd count: let the last note span the 2-column mobile grid instead of leaving a gap.
+                className={cn(
+                  cs.results.length % 2 === 1 &&
+                    i === cs.results.length - 1 &&
+                    "col-span-2 md:col-span-1",
+                )}
+              >
+                <StickyNote
+                  tone={r.tone}
+                  tilt={NOTE_TILTS[i % NOTE_TILTS.length] ?? 0}
+                  className="flex min-h-48 flex-col justify-between"
+                >
                   <CountUp value={r.value} className="font-display text-5xl leading-none" />
                   <p className="micro mt-6 text-[0.66rem] leading-snug">{r.label}</p>
                 </StickyNote>
@@ -302,7 +344,11 @@ export function CaseStudyPage({ cs }: { cs: CaseStudy }) {
               <ul className="space-y-4">
                 {cs.roleMine.map((r, i) => (
                   <li key={i} className="flex gap-3 text-lg">
-                    <Check className="mt-1 h-5 w-5 shrink-0 text-blue" strokeWidth={3} aria-hidden />
+                    <Check
+                      className="mt-1 h-5 w-5 shrink-0 text-blue"
+                      strokeWidth={3}
+                      aria-hidden
+                    />
                     <span>{r}</span>
                   </li>
                 ))}
@@ -332,7 +378,12 @@ export function CaseStudyPage({ cs }: { cs: CaseStudy }) {
               Lessons I&apos;m <em>keeping</em>
             </h2>
           </Reveal>
-          <div className={cn("grid gap-8", cs.lessons.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3")}>
+          <div
+            className={cn(
+              "grid gap-8",
+              cs.lessons.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3",
+            )}
+          >
             {cs.lessons.map((l, i) => (
               <Reveal key={l} delay={i * 100}>
                 <div
@@ -341,7 +392,9 @@ export function CaseStudyPage({ cs }: { cs: CaseStudy }) {
                 >
                   <div className="h-3 rounded-t-sm bg-blush" />
                   <div className="bg-[repeating-linear-gradient(transparent_0_31px,var(--powder)_31px_32px)] px-7 pb-8 pt-6">
-                    <p className="micro mb-3 opacity-60">(Lesson {String(i + 1).padStart(2, "0")})</p>
+                    <p className="micro mb-3 opacity-60">
+                      (Lesson {String(i + 1).padStart(2, "0")})
+                    </p>
                     <p className="font-display text-3xl italic leading-[32px]">{l}</p>
                   </div>
                 </div>

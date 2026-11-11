@@ -1,12 +1,17 @@
 import type { ReactNode } from "react";
 
-import { Fill, type Tone } from "@/components/site/pill";
+import type { Tone } from "@/components/site/pill";
 import applysparkShot from "@/assets/applyspark_homepage.png.asset.json";
+import applysparkDeadlines from "@/assets/applyspark_deadlines.jpg";
+import applysparkUniversities from "@/assets/applyspark_universities.jpg";
+import applysparkProfileAnalyzer from "@/assets/applyspark_profile_analyzer.jpg";
 import vocationShot from "@/assets/vocation_homepage.png.asset.json";
 import vocationJobSim from "@/assets/vocation_job_sim.png.asset.json";
 import vocationMiniMt from "@/assets/vocation_mini_mt.png.asset.json";
 import vocationFinalReport from "@/assets/vocation_final_report.png.asset.json";
-import vocationPersonalReport from "@/assets/vocation_personal_report.png.asset.json";
+import vocationAssessment from "@/assets/vocation_assessment.webp";
+import vocationJobReport from "@/assets/vocation_job_report.webp";
+import vocationResults from "@/assets/vocation_results.jpg";
 
 export type CaseStudy = {
   slug: "applyspark" | "vocation";
@@ -54,13 +59,38 @@ export const APPLYSPARK: CaseStudy = {
   heroImage: applysparkShot.url,
   glance: [
     { tab: "My role", value: "Co-founder & Chief Marketing Officer" },
-    { tab: "Team", value: <><Fill>number</Fill> co-founders</> },
+    { tab: "Team", value: "5 co-founders" },
     { tab: "Timeline", value: "Sep 2026 — present" },
-    { tab: "Tools", value: <Fill>e.g. Lovable, Meta Business Suite, Canva, CapCut</Fill> },
   ],
   problem: {
-    text: "Vietnamese students who self-apply abroad juggle deadlines, requirements and scholarships across dozens of scattered websites and spreadsheets — and pay high fees for agencies to do what they could do themselves with the right tools.",
-    stat: { value: "Dozens", label: "of scattered sites & spreadsheets per applicant" },
+    text: "Students who self-apply abroad juggle deadlines, requirements and scholarships across dozens of scattered websites and spreadsheets — and pay high fees for agencies to do what they could do themselves with the right tools.",
+    stat: {
+      value: "7.3M",
+      label: "students study outside their home country",
+      source: "UNESCO Higher Education Global Trends Report (2023 data)",
+    },
+    evidence: [
+      {
+        title: "Why it's hard",
+        items: [
+          {
+            value: "7",
+            label: "applications per applicant on average — each with its own deadlines and requirements",
+            source: "Common App End of Season Report, 2025–26",
+          },
+          {
+            value: "376",
+            label: "students per school counselor — well above the recommended 250",
+            source: "ASCA, 2023–24 (U.S.)",
+          },
+          {
+            value: "23%",
+            label: "of international applicants turn to paid agents to get through the process",
+            source: "World Education Services survey of 5,880 students",
+          },
+        ],
+      },
+    ],
   },
   insight:
     "Students don't need someone to apply for them — they need structure, proven resources, and people who've done it before.",
@@ -70,11 +100,19 @@ export const APPLYSPARK: CaseStudy = {
       title: "Deadline tracker",
       body: "Every application deadline in one place, with automatic reminders 14, 7 and 1 day before each one — so nothing slips.",
       shot: "ApplySpark deadline tracker",
+      image: applysparkDeadlines,
     },
     {
       title: "University database",
       body: "61 universities across 13 countries. Compare QS & U.S. News rankings, tuition, requirements, test scores, scholarships and majors side by side.",
       shot: "ApplySpark university compare",
+      image: applysparkUniversities,
+    },
+    {
+      title: "Profile analyzer",
+      body: "Pick a target university and get a school-by-school read of your profile — academics, activities, essays and recommendations — with an estimated match, your strengths and gaps, and a month-by-month roadmap to the deadline.",
+      shot: "ApplySpark profile analyzer",
+      image: applysparkProfileAnalyzer,
     },
     {
       title: "Proven application resources",
@@ -89,22 +127,24 @@ export const APPLYSPARK: CaseStudy = {
     {
       name: "Basic",
       price: "Free",
-      body: "The deadline tracker and core tools, free — builds trust and fills the top of the funnel.",
+      body: "Globe, country pages and every deadline; a university list with reports to inbox and email; reminders 14, 7 and 1 day before each deadline; requests to alumni; profile analysis 3 times every 30 days.",
       tone: "sage",
     },
     {
-      name: "Paid subscription",
-      price: <Fill>price / month</Fill>,
-      body: <>Unlocks <Fill>what paid users get</Fill>.</>,
+      name: "Premium",
+      price: "49,000 VND / month",
+      body: "Everything in Basic, plus unlimited profile analysis, agency discount codes and direct enquiries, the full archive of successful profiles, new internships 48 hours early and priority on alumni requests.",
       tone: "butter",
     },
     {
-      name: "Why freemium",
-      price: "25% convert",
-      body: "One in four students who sign up become paying subscribers — free earns the trust, paid earns its price.",
+      name: "VIP",
+      price: "149,000 VND / month",
+      body: "Everything in Premium, plus hand-matched alumni, personal introductions to agencies, featured team posts, top priority on every request and personal support in your inbox.",
       tone: "powder",
     },
   ],
+  modelNote:
+    "Freemium on purpose: the free plan earns students' trust, and one in four who sign up go on to pay.",
   gtm: {
     kind: "playbook",
     title: "How I got users",
@@ -121,10 +161,6 @@ export const APPLYSPARK: CaseStudy = {
         title: "Targeted campaigns",
         body: "Campaigns aimed at self-applying students drove 200+ registrations and 50 monthly paying subscribers.",
       },
-      {
-        title: "Best campaigns",
-        body: <Fill>1–2 best campaigns — what you did and the result</Fill>,
-      },
     ],
   },
   results: [
@@ -132,7 +168,6 @@ export const APPLYSPARK: CaseStudy = {
     { value: "200+", label: "Registrations", tone: "powder" },
     { value: "50", label: "Paying subscribers / month", tone: "blush" },
     { value: "25%", label: "Sign-up → paid conversion", tone: "sage" },
-    { value: "Profitable", label: <Fill>revenue / month or time to profitability</Fill>, tone: "beige" },
   ],
   roleMine: [
     "Led brand, content, PR and growth end to end",
@@ -142,7 +177,6 @@ export const APPLYSPARK: CaseStudy = {
   ],
   roleTeam: [
     "Co-founders shared product decisions and website build",
-    <><Fill>what your co-founders owned</Fill></>,
   ],
   lessons: [
     "Distribution is a product feature.",
@@ -166,7 +200,6 @@ export const VOCATION: CaseStudy = {
     { tab: "My role", value: "Project Leader & Web Developer (original idea)" },
     { tab: "Team", value: "4 people" },
     { tab: "Timeline", value: "Oct 2026 — present" },
-    { tab: "Tools", value: <Fill>e.g. React, Vercel, AI API</Fill> },
   ],
   problem: {
     text: "Choosing a career is a big, costly and hard-to-reverse decision — yet Vietnamese students in grades 10–12 make it without real data, based on rumours, parents' wishes or test scores, and without ever trying the work.",
@@ -210,11 +243,13 @@ export const VOCATION: CaseStudy = {
       title: "Two-stage assessment",
       body: "12 everyday school situations (12–15 min), then a 3-minute deep dive into the student's top industry group.",
       shot: "Vocation assessment",
+      image: vocationAssessment,
     },
     {
       title: "AI recommendations",
       body: "1–2 best-fit careers, with reasons drawn from the student's own answers and a learning path to get there.",
       shot: "Vocation result page",
+      image: vocationResults,
     },
     {
       title: "Job Simulator + AI mentor",
@@ -226,7 +261,7 @@ export const VOCATION: CaseStudy = {
       title: "AI feedback & personal report",
       body: "Feedback on every task, rolled into a personal report the student can share with parents and teachers.",
       shot: "Vocation personal report",
-      image: vocationPersonalReport.url,
+      image: vocationJobReport,
     },
     {
       title: "Mini-MT Program",
@@ -268,7 +303,6 @@ export const VOCATION: CaseStudy = {
     { value: "16", label: "Careers students can try", tone: "butter" },
     { value: "5-year", label: "Business plan & financial model (team)", tone: "powder" },
     { value: "From 0", label: "Working product built from scratch", tone: "blush" },
-    { value: "—", label: <Fill>students tested, survey responses or waitlist</Fill>, tone: "sage" },
   ],
   roleMine: [
     "Came up with the idea and the solution",
