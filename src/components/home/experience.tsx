@@ -1,7 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
-import { Megaphone, Search, Trophy, Globe2 } from "lucide-react";
+import { Megaphone, Search } from "lucide-react";
 
-import { Fill } from "@/components/site/pill";
 import { ImagePlaceholder, SectionHeading } from "@/components/site/frames";
 import { PaperClip, StarSticker, Tape } from "@/components/site/props";
 import { Reveal } from "@/components/site/reveal";
@@ -43,26 +42,6 @@ const ITEMS: Item[] = [
     tilt: 2,
     prop: "clip",
   },
-  {
-    role: "First Place",
-    org: "Business Bootcamp Competition",
-    dates: "Summer 2026",
-    impact: <Fill>one line on what you built or pitched</Fill>,
-    icon: Trophy,
-    tone: "bg-butter",
-    tilt: -1.5,
-    prop: "star",
-  },
-  {
-    role: "Communications Ambassador",
-    org: "AIESEC Dash For Impact Competition",
-    dates: "2026",
-    impact: <Fill>one line of impact or reach</Fill>,
-    icon: Globe2,
-    tone: "bg-blush",
-    tilt: 2.5,
-    prop: "tape",
-  },
 ];
 
 export function Experience() {
@@ -77,7 +56,7 @@ export function Experience() {
           </SectionHeading>
         </Reveal>
 
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+        <div className="grid gap-10 sm:grid-cols-2 lg:gap-12">
           {ITEMS.map((item, i) => {
             const Icon = item.icon;
             return (

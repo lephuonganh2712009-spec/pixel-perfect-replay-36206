@@ -1,7 +1,7 @@
-import { Mail, Linkedin, Download } from "lucide-react";
+import { Mail, Download } from "lucide-react";
 
 import { SITE } from "@/content/site";
-import { Fill, pillVariants } from "@/components/site/pill";
+import { pillVariants } from "@/components/site/pill";
 import { Envelope, StarSticker } from "@/components/site/props";
 import { Reveal } from "@/components/site/reveal";
 
@@ -25,15 +25,6 @@ export function Contact() {
             <a href={`mailto:${SITE.email}`} className={pillVariants({ size: "lg" })}>
               <Mail className="h-4 w-4" /> Email me
             </a>
-            {SITE.linkedinUrl ? (
-              <a href={SITE.linkedinUrl} target="_blank" rel="noreferrer" className={pillVariants({ variant: "outline", size: "lg" })}>
-                <Linkedin className="h-4 w-4" /> LinkedIn
-              </a>
-            ) : (
-              <span className={pillVariants({ variant: "outline", size: "lg" })} aria-disabled>
-                <Linkedin className="h-4 w-4" /> LinkedIn <Fill>URL</Fill>
-              </span>
-            )}
             <a href={SITE.cvUrl} download className={pillVariants({ variant: "outline", size: "lg" })}>
               <Download className="h-4 w-4" /> Download CV
             </a>

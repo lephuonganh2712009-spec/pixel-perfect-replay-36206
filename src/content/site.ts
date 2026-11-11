@@ -2,7 +2,6 @@ export const SITE = {
   name: "Phuong Anh Le",
   email: "lephuonganh2712009@gmail.com",
   cvUrl: "/cv.pdf",
-  linkedinUrl: "" as string, // add LinkedIn profile URL when available
 };
 
 export const NAV_LINKS = [
@@ -44,6 +43,5 @@ export const FACTS = [
   ["Class of", "2027"],
   ["GPA", "9.6 / 10"],
   ["IELTS", "8.0"],
-  ["SAT", "1440"],
   ["Honours", "Excellent Student Award, 12 consecutive years"],
 ] as const;

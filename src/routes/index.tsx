@@ -31,12 +31,12 @@ function Home() {
   return (
     <>
       <Hero />
+      <About />
       <Marquee items={["Founder", "Marketer", "Builder", "Storyteller", "Hanoi → the world"]} />
       <Impact />
       <Ventures />
       <Marquee items={["Proof, not promises"]} tone="powder" />
       <Experience />
-      <About />
       <Skills />
       <Contact />
     </>
