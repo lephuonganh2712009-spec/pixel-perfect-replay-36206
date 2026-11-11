@@ -1,7 +1,8 @@
 import type { CSSProperties, ReactNode } from "react";
 import { Megaphone, Search } from "lucide-react";
 
-import { ImagePlaceholder, SectionHeading } from "@/components/site/frames";
+import { SectionHeading } from "@/components/site/frames";
+import m4uPhoto from "@/assets/m4u_showcase_2025.png.asset.json";
 import { PaperClip, StarSticker, Tape } from "@/components/site/props";
 import { Reveal } from "@/components/site/reveal";
 import { cn } from "@/lib/utils";
@@ -14,7 +15,7 @@ type Item = {
   icon: typeof Megaphone;
   tone: string;
   tilt: number;
-  photo?: string;
+  photo?: { src: string; alt: string };
   prop: "clip" | "tape" | "star";
 };
 
@@ -28,7 +29,7 @@ const ITEMS: Item[] = [
     icon: Megaphone,
     tone: "bg-cream",
     tilt: -3,
-    photo: "M4U concert",
+    photo: { src: m4uPhoto.url, alt: "M4U members on stage at the Showcase 2025 concert" },
     prop: "tape",
   },
   {
@@ -73,7 +74,15 @@ export function Experience() {
                     <Icon className="h-5 w-5" strokeWidth={1.75} aria-hidden />
                   </div>
                   {item.photo && (
-                    <ImagePlaceholder label={item.photo} ratio="aspect-[4/3]" className="mb-5 border border-chocolate/20" />
+                    <figure className="mb-5 bg-cream p-2 pb-3 shadow-note">
+                      <img
+                        src={item.photo.src}
+                        alt={item.photo.alt}
+                        loading="lazy"
+                        className="aspect-[4/3] w-full object-cover"
+                      />
+                      <figcaption className="micro mt-2 text-right text-[0.6rem] opacity-70">Showcase 2025</figcaption>
+                    </figure>
                   )}
                   <p className="micro text-[0.65rem] opacity-75">({item.dates})</p>
                   <h3 className="mt-2 text-3xl leading-tight">{item.role}</h3>

@@ -6,7 +6,7 @@ import type { CaseStudy } from "@/content/case-studies";
 import { cn } from "@/lib/utils";
 
 import { CountUp } from "./count-up";
-import { BrowserFrame, FolderMini, ImagePlaceholder, StickyNote } from "./frames";
+import { BrowserFrame, FolderMini, ImagePlaceholder, Screenshot, StickyNote } from "./frames";
 import { Marquee } from "./marquee";
 import { pillVariants, Tag } from "./pill";
 import { Bow, Envelope, Magnifier, PaperClip, StarSticker, Tape } from "./props";
@@ -48,7 +48,11 @@ export function CaseStudyPage({ cs }: { cs: CaseStudy }) {
         </Reveal>
         <Reveal delay={150} className="relative">
           <BrowserFrame url={host} tilt={3} tapeTone="blush">
-            <ImagePlaceholder label={cs.heroShot} />
+            {cs.heroImage ? (
+              <Screenshot src={cs.heroImage} alt={`${cs.name} website — ${cs.heroShot}`} />
+            ) : (
+              <ImagePlaceholder label={cs.heroShot} />
+            )}
           </BrowserFrame>
           <StarSticker className="absolute -bottom-6 -left-4 h-16 w-16 -rotate-12" />
         </Reveal>
