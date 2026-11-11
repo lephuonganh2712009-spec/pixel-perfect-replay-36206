@@ -15,7 +15,7 @@ export function Hero() {
       <Reveal>
         <p className="micro mb-6">(Student founder · Marketer · Builder)</p>
         <h1 className="text-[3.1rem] leading-[0.98] sm:text-7xl lg:text-[5.4rem]">
-          I turn student problems into <em className="text-chocolate/90">real products</em> — and make sure people{" "}
+          I turn student problems into <em className="text-chocolate/90">real products</em> and make sure people{" "}
           <span className="relative inline-block">
             find them.
             <svg viewBox="0 0 300 20" className="absolute -bottom-2 left-0 w-full" aria-hidden preserveAspectRatio="none">
