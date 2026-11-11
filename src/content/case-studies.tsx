@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 
 import { Fill, type Tone } from "@/components/site/pill";
+import applysparkShot from "@/assets/applyspark_homepage.png.asset.json";
+import vocationShot from "@/assets/vocation_homepage.png.asset.json";
 
 export type CaseStudy = {
   slug: "applyspark" | "vocation";
@@ -10,6 +12,8 @@ export type CaseStudy = {
   intro: string;
   liveUrl: string;
   heroShot: string;
+  /** Real screenshot URL; falls back to a labelled placeholder when absent. */
+  heroImage?: string;
   glance: { tab: string; value: ReactNode }[];
   problem: { text: string; stat: { value: string; label: string } };
   insight: string;
@@ -37,6 +41,7 @@ export const APPLYSPARK: CaseStudy = {
     "A planning platform for Vietnamese students applying abroad on their own — deadlines, universities, resources and mentors in one place.",
   liveUrl: "https://applysparkvn.com",
   heroShot: "ApplySpark home page",
+  heroImage: applysparkShot.url,
   glance: [
     { tab: "My role", value: "Co-founder & Chief Marketing Officer" },
     { tab: "Team", value: <><Fill>number</Fill> co-founders</> },
@@ -145,7 +150,8 @@ export const VOCATION: CaseStudy = {
   intro:
     "A career-trial platform where high schoolers take an assessment, get matched to careers, then actually do a mini work day before picking a major.",
   liveUrl: "https://vocation-lovat.vercel.app",
-  heroShot: "Vocation job simulator",
+  heroShot: "Vocation home page",
+  heroImage: vocationShot.url,
   glance: [
     { tab: "My role", value: "Project Leader & Web Developer (original idea)" },
     { tab: "Team", value: "4 people" },

@@ -3,7 +3,8 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { pillVariants, Tag, type Tone } from "@/components/site/pill";
-import { BrowserFrame, ImagePlaceholder, SectionHeading } from "@/components/site/frames";
+import { BrowserFrame, Screenshot, SectionHeading } from "@/components/site/frames";
+import { APPLYSPARK, VOCATION } from "@/content/case-studies";
 import { Bow, Magnifier } from "@/components/site/props";
 import { Reveal } from "@/components/site/reveal";
 
@@ -15,6 +16,7 @@ type Venture = {
   pills: { label: string; tone: Tone }[];
   live: string;
   shot: string;
+  image: string;
   tilt: number;
 };
 
@@ -31,6 +33,7 @@ const VENTURES: Venture[] = [
     ],
     live: "https://applysparkvn.com",
     shot: "ApplySpark home page",
+    image: APPLYSPARK.heroImage ?? "",
     tilt: -2,
   },
   {
@@ -44,7 +47,8 @@ const VENTURES: Venture[] = [
       { label: "B2C + B2B2C model", tone: "blush" },
     ],
     live: "https://vocation-lovat.vercel.app",
-    shot: "Vocation job simulator",
+    shot: "Vocation home page",
+    image: VOCATION.heroImage ?? "",
     tilt: 2,
   },
 ];
@@ -56,7 +60,7 @@ function VentureCard({ v }: { v: Venture }) {
       <div className="relative flex flex-1 flex-col rounded-b-2xl rounded-tr-2xl bg-tan px-5 pt-6 md:px-8 md:pt-8">
         <div className="relative z-0 transition-transform duration-500 ease-out group-hover:-translate-y-5">
           <BrowserFrame url={v.live.replace("https://", "")} tilt={v.tilt} tapeTone="powder">
-            <ImagePlaceholder label={v.shot} />
+            <Screenshot src={v.image} alt={`${v.name} website — ${v.shot}`} />
           </BrowserFrame>
         </div>
         <div className="relative z-10 -mx-5 -mt-16 flex flex-1 flex-col rounded-2xl border-t-[1.5px] border-chocolate/15 bg-beige p-6 shadow-paper md:-mx-8 md:-mt-24 md:p-9">

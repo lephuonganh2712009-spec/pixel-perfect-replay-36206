@@ -33,6 +33,30 @@ export function ImagePlaceholder({
   );
 }
 
+/** Full-page website screenshot: shows the top, then slowly scrolls to the bottom on hover. */
+export function Screenshot({
+  src,
+  alt,
+  className,
+  ratio = "aspect-[16/10]",
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+  ratio?: string;
+}) {
+  return (
+    <div className={cn("group/shot relative w-full overflow-hidden bg-paper", ratio, className)}>
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        className="h-full w-full object-cover object-top transition-[object-position] duration-[6000ms] ease-in-out group-hover/shot:object-bottom motion-reduce:transition-none"
+      />
+    </div>
+  );
+}
+
 export function BrowserFrame({
   url,
   children,
