@@ -3,9 +3,9 @@ import { Link } from "@tanstack/react-router";
 import { ArrowDownRight } from "lucide-react";
 
 import { SITE } from "@/content/site";
+import portrait from "@/assets/phuong_anh_portrait.jpg.asset.json";
 import { cn } from "@/lib/utils";
 import { pillVariants } from "@/components/site/pill";
-import { ImagePlaceholder } from "@/components/site/frames";
 import { Envelope, PaperClip, PostageStamp, StarSticker, Tape } from "@/components/site/props";
 import { Reveal } from "@/components/site/reveal";
 
@@ -41,7 +41,11 @@ export function Hero() {
           {/* polaroid portrait */}
           <div className="tilt relative bg-cream p-3 pb-14 shadow-lift" style={{ "--tilt": "-4deg" } as CSSProperties}>
             <Tape className="-top-3 left-1/2 -translate-x-1/2" tone="powder" tilt={-3} />
-            <ImagePlaceholder label="Portrait of Phuong Anh" ratio="aspect-[4/5]" />
+            <img
+              src={portrait.url}
+              alt="Phuong Anh Le wearing a white áo dài"
+              className="aspect-[4/5] w-full object-cover object-top"
+            />
             <p className="absolute bottom-4 left-0 right-0 pr-5 text-right font-display text-2xl italic">Phuong Anh, Hanoi</p>
           </div>
           <PaperClip className="absolute -left-4 -top-8 rotate-[-12deg]" />
