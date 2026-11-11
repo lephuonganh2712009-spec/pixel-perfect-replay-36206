@@ -195,7 +195,7 @@
   position: absolute;
   width: 6rem;
   height: 1.6rem;
-  background: oklch(0.953 0.093 98.6 / 0.75);
+  background: var(--tape-color, color-mix(in oklab, var(--butter) 78%, transparent));
   box-shadow: 0 1px 2px oklch(0.327 0.051 47 / 0.12);
   clip-path: polygon(3% 0, 97% 4%, 100% 50%, 96% 100%, 2% 96%, 0 50%);
   z-index: 5;
@@ -248,4 +248,8 @@
     transition-duration: 0.001ms !important;
   }
   .reveal { opacity: 1; transform: none; }
+}
+
+@utility drop-paper {
+  filter: drop-shadow(0 8px 12px oklch(0.327 0.051 47 / 0.22));
 }
