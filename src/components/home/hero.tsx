@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowDownRight } from "lucide-react";
 
@@ -38,7 +39,7 @@ export function Hero() {
       <Reveal delay={150} className="relative mx-auto w-full max-w-md lg:max-w-none">
         <div className="relative mx-auto w-[82%] sm:w-[72%] lg:w-[80%]">
           {/* polaroid portrait */}
-          <div className="tilt relative bg-cream p-3 pb-14 shadow-lift" style={{ "--tilt": "-4deg" } as React.CSSProperties}>
+          <div className="tilt relative bg-cream p-3 pb-14 shadow-lift" style={{ "--tilt": "-4deg" } as CSSProperties}>
             <Tape className="-top-3 left-1/2 -translate-x-1/2" tone="powder" tilt={-3} />
             <ImagePlaceholder label="Portrait of Phuong Anh" ratio="aspect-[4/5]" />
             <p className="absolute bottom-4 left-0 right-0 text-center font-display text-2xl italic">Phuong Anh, Hanoi</p>
