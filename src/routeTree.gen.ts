@@ -10,33 +10,53 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as WorkApplysparkRouteImport } from './routes/work.applyspark'
+import { Route as WorkVocationRouteImport } from './routes/work.vocation'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WorkApplysparkRoute = WorkApplysparkRouteImport.update({
+  id: '/work/applyspark',
+  path: '/work/applyspark',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkVocationRoute = WorkVocationRouteImport.update({
+  id: '/work/vocation',
+  path: '/work/vocation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/work/applyspark': typeof WorkApplysparkRoute
+  '/work/vocation': typeof WorkVocationRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/work/applyspark': typeof WorkApplysparkRoute
+  '/work/vocation': typeof WorkVocationRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/work/applyspark': typeof WorkApplysparkRoute
+  '/work/vocation': typeof WorkVocationRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/work/applyspark' | '/work/vocation'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/work/applyspark' | '/work/vocation'
+  id: '__root__' | '/' | '/work/applyspark' | '/work/vocation'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  WorkApplysparkRoute: typeof WorkApplysparkRoute
+  WorkVocationRoute: typeof WorkVocationRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +68,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/work/applyspark': {
+      id: '/work/applyspark'
+      path: '/work/applyspark'
+      fullPath: '/work/applyspark'
+      preLoaderRoute: typeof WorkApplysparkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/work/vocation': {
+      id: '/work/vocation'
+      path: '/work/vocation'
+      fullPath: '/work/vocation'
+      preLoaderRoute: typeof WorkVocationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  WorkApplysparkRoute: WorkApplysparkRoute,
+  WorkVocationRoute: WorkVocationRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

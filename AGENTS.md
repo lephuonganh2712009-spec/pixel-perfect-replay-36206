@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- Page copy and case-study data live in `src/content/` (site.ts, case-studies.tsx); components only render it — keeps content edits in one place.
+- Both case study routes render the shared `CaseStudyPage` template — keeps the two studies structurally identical.
+- Scrapbook visuals (sticky-note, tape, stamp-edge, folder-tab, bg-stripes, bg-grid-paper, reveal) are `@utility` classes in src/styles.css; reuse them instead of ad-hoc styles.
