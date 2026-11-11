@@ -88,8 +88,33 @@ export function CaseStudyPage({ cs }: { cs: CaseStudy }) {
             <Tape className="-top-3 left-1/2 -translate-x-1/2" tilt={-4} />
             <CountUp value={cs.problem.stat.value} className="font-display text-6xl leading-none" />
             <p className="micro mt-5 leading-snug">{cs.problem.stat.label}</p>
+            {cs.problem.stat.source && (
+              <p className="mt-3 text-xs italic opacity-70">Source: {cs.problem.stat.source}</p>
+            )}
           </StickyNote>
         </Reveal>
+        {cs.problem.evidence && (
+          <div className="grid gap-8 md:grid-cols-2 lg:col-span-2">
+            {cs.problem.evidence.map((group, gi) => (
+              <Reveal key={group.title} delay={gi * 120} className="h-full">
+                <FolderMini tab={group.title} tone={gi % 2 ? "powder" : "beige"} className="h-full">
+                  <ul className="divide-y divide-chocolate/15">
+                    {group.items.map((item, ii) => (
+                      <li key={ii} className="flex items-baseline gap-5 py-4 first:pt-1 last:pb-1">
+                        <CountUp value={item.value} className="w-24 shrink-0 font-display text-5xl leading-none" />
+                        <div>
+                          <p className="text-lg leading-snug">{item.label}</p>
+                          {item.source && <p className="mt-1 text-xs italic opacity-60">Source: {item.source}</p>}
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                  {group.source && <p className="mt-4 text-xs italic opacity-60">Source: {group.source}</p>}
+                </FolderMini>
+              </Reveal>
+            ))}
+          </div>
+        )}
       </section>
 
       <section className="bg-stripes border-y-[1.5px] border-chocolate py-24 md:py-32">
@@ -121,7 +146,11 @@ export function CaseStudyPage({ cs }: { cs: CaseStudy }) {
                   <div className={cn(flip && "md:order-2")}>
                     {f.shot ? (
                       <BrowserFrame url={host} tilt={flip ? 2 : -2} tapeTone={flip ? "sage" : "butter"}>
-                        <ImagePlaceholder label={f.shot} />
+                        {f.image ? (
+                          <Screenshot src={f.image} alt={`${cs.name} — ${f.shot}`} />
+                        ) : (
+                          <ImagePlaceholder label={f.shot} />
+                        )}
                       </BrowserFrame>
                     ) : (
                       <StickyNote tone={flip ? "powder" : "butter"} tilt={flip ? 2 : -2} className="mx-auto max-w-sm !p-10 text-center">

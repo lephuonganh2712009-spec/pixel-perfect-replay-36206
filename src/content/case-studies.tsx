@@ -3,6 +3,10 @@ import type { ReactNode } from "react";
 import { Fill, type Tone } from "@/components/site/pill";
 import applysparkShot from "@/assets/applyspark_homepage.png.asset.json";
 import vocationShot from "@/assets/vocation_homepage.png.asset.json";
+import vocationJobSim from "@/assets/vocation_job_sim.png.asset.json";
+import vocationMiniMt from "@/assets/vocation_mini_mt.png.asset.json";
+import vocationFinalReport from "@/assets/vocation_final_report.png.asset.json";
+import vocationPersonalReport from "@/assets/vocation_personal_report.png.asset.json";
 
 export type CaseStudy = {
   slug: "applyspark" | "vocation";
@@ -15,10 +19,16 @@ export type CaseStudy = {
   /** Real screenshot URL; falls back to a labelled placeholder when absent. */
   heroImage?: string;
   glance: { tab: string; value: ReactNode }[];
-  problem: { text: string; stat: { value: string; label: string } };
+  problem: {
+    text: string;
+    stat: { value: string; label: string; source?: string };
+    /** Optional groups of supporting numbers, each with its own source. */
+    evidence?: { title: string; items: { value: string; label: string; source?: string }[]; source?: string }[];
+  };
   insight: string;
   builtTitle: string;
-  features: { title: string; body: ReactNode; shot?: string }[];
+  /** `shot` labels the screenshot; `image` is the real screenshot URL (placeholder shown when absent). */
+  features: { title: string; body: ReactNode; shot?: string; image?: string }[];
   builtNote?: ReactNode;
   model: { name: string; price: ReactNode; body: ReactNode; tone: Tone }[];
   modelNote?: ReactNode;
@@ -159,8 +169,39 @@ export const VOCATION: CaseStudy = {
     { tab: "Tools", value: <Fill>e.g. React, Vercel, AI API</Fill> },
   ],
   problem: {
-    text: "Vietnamese students in grades 10–12 choose university majors based on rumours, parents' wishes or test scores — without ever trying the work. Many end up in the wrong field.",
-    stat: { value: "0", label: "hours of real work tried before choosing a major" },
+    text: "Choosing a career is a big, costly and hard-to-reverse decision — yet Vietnamese students in grades 10–12 make it without real data, based on rumours, parents' wishes or test scores, and without ever trying the work.",
+    stat: { value: "37.6%", label: "of students struggle to choose a career", source: "VNU Hanoi, 2019" },
+    evidence: [
+      {
+        title: "The reason",
+        source: "Vocation project survey",
+        items: [
+          { value: "71%", label: "lack thorough career guidance at school" },
+          { value: "66%", label: "have theoretical knowledge without first-hand experience" },
+          { value: "70%", label: "are unclear about their own identity and strengths" },
+        ],
+      },
+      {
+        title: "The consequences",
+        items: [
+          {
+            value: "60%",
+            label: "of students pick the wrong major; only 5% truly understand it",
+            source: "HCMC Labor Forecast Center (2019), ZNews",
+          },
+          {
+            value: "20%",
+            label: "realise they chose the wrong career only after graduating",
+            source: "Dr. Huỳnh Văn Sơn, SGGP",
+          },
+          {
+            value: "20%",
+            label: "of students drop out, mostly in their first year",
+            source: "Dr. Huỳnh Văn Sơn, SGGP",
+          },
+        ],
+      },
+    ],
   },
   insight: "Try the job before choosing the major. Experience beats personality quizzes.",
   builtTitle: "What I built",
@@ -179,15 +220,25 @@ export const VOCATION: CaseStudy = {
       title: "Job Simulator + AI mentor",
       body: "A mini work day at a virtual company: tasks from a virtual manager — writing captions, reading data, prioritising, allocating budget, fixing code — with an AI mentor for hints along the way.",
       shot: "Vocation job simulator",
+      image: vocationJobSim.url,
     },
     {
       title: "AI feedback & personal report",
       body: "Feedback on every task, rolled into a personal report the student can share with parents and teachers.",
       shot: "Vocation personal report",
+      image: vocationPersonalReport.url,
     },
     {
       title: "Mini-MT Program",
-      body: "Two weeks with a real industry specialist — the step from simulation to the real thing.",
+      body: "Two weeks, 12 sessions, real tasks from 3 careers at partner companies — with feedback from a specialist who does the job. The step from simulation to the real thing.",
+      shot: "Vocation Mini-MT program",
+      image: vocationMiniMt.url,
+    },
+    {
+      title: "Final report",
+      body: "After the 12 days, one clear direction: competence, interest and energy scored for each career, a verdict (pursue, build skills or try another), concrete next steps and a section written for parents.",
+      shot: "Vocation Mini-MT final report",
+      image: vocationFinalReport.url,
     },
   ],
   builtNote: (
