@@ -15,7 +15,7 @@ export function useInView<T extends Element>(threshold = 0.15): [RefObject<T | n
     }
     const io = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry?.isIntersecting) {
           setInView(true);
           io.disconnect();
         }

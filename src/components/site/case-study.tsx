@@ -208,7 +208,7 @@ export function CaseStudyPage({ cs }: { cs: CaseStudy }) {
           ) : (
             <ol className="grid gap-8 md:grid-cols-4 md:gap-4">
               {cs.gtm.steps.map((s, i) => {
-                const Prop = FLOW_PROPS[i];
+                const Prop = FLOW_PROPS[i] ?? Magnifier;
                 return (
                   <Reveal key={s.title} delay={i * 110}>
                     <li className="relative flex h-full flex-col items-center text-center">
@@ -244,7 +244,7 @@ export function CaseStudyPage({ cs }: { cs: CaseStudy }) {
           <div className="grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 lg:grid-cols-5 lg:gap-6">
             {cs.results.map((r, i) => (
               <Reveal key={i} delay={i * 80}>
-                <StickyNote tone={r.tone} tilt={NOTE_TILTS[i % NOTE_TILTS.length]} className="flex min-h-48 flex-col justify-between">
+                <StickyNote tone={r.tone} tilt={NOTE_TILTS[i % NOTE_TILTS.length] ?? 0} className="flex min-h-48 flex-col justify-between">
                   <CountUp value={r.value} className="font-display text-5xl leading-none" />
                   <p className="micro mt-6 text-[0.66rem] leading-snug">{r.label}</p>
                 </StickyNote>

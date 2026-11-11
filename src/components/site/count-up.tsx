@@ -7,7 +7,7 @@ const PATTERN = /^([^\d]*)([\d,]+)(.*)$/;
 /** Animates the first number in a string like "1,000+", "25%" or "300/300". */
 export function CountUp({ value, className }: { value: string; className?: string }) {
   const match = value.match(PATTERN);
-  const target = match ? parseInt(match[2].replace(/,/g, ""), 10) : 0;
+  const target = match ? parseInt((match[2] ?? "0").replace(/,/g, ""), 10) : 0;
   const [ref, inView] = useInView<HTMLSpanElement>(0.4);
   const [n, setN] = useState<number | null>(null);
   const armed = useRef(false);
