@@ -1,5 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
-import { Megaphone, Search } from "lucide-react";
+import { ArrowUpRight, Megaphone, Search } from "lucide-react";
 
 import { SectionHeading } from "@/components/site/frames";
 import m4uPhoto from "@/assets/m4u_showcase_2025.png.asset.json";
@@ -16,6 +16,7 @@ type Item = {
   tone: string;
   tilt: number;
   photo?: { src: string; alt: string };
+  doc?: { href: string; label: string };
   prop: "clip" | "tape" | "star";
 };
 
@@ -35,12 +36,13 @@ const ITEMS: Item[] = [
   {
     role: "Retail Strategy & Market Research Intern",
     org: "Retail World Investment Consultant LLC",
-    dates: "Jun – Aug 2026 · Remote",
+    dates: "Apr – Jun 2026 · Remote · 3 months",
     impact:
-      "Built competitor benchmarks across pricing, promotions, channels and expansion signals in Vietnam's retail sector; turned research into evidence-based summaries.",
+      "Mapped Vietnam's retail landscape from industry reports and company disclosures, benchmarked retailers on assortment, pricing and promotions, store and online channels, service and expansion, and turned the findings into concise, evidence-based summaries for management.",
     icon: Search,
     tone: "bg-powder",
     tilt: 2,
+    doc: { href: "/Retail_World_Internship_Le_Phuong_Anh.pdf", label: "View internship report" },
     prop: "clip",
   },
 ];
@@ -88,6 +90,17 @@ export function Experience() {
                   <h3 className="mt-2 text-3xl leading-tight">{item.role}</h3>
                   <p className="mt-1 font-display text-xl italic">{item.org}</p>
                   <p className="mt-4 text-[0.95rem] leading-relaxed">{item.impact}</p>
+                  {item.doc && (
+                    <a
+                      href={item.doc.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-5 inline-flex items-center gap-1.5 rounded-full border-[1.5px] border-chocolate bg-cream px-4 py-2 text-sm font-medium transition-colors hover:bg-chocolate hover:text-cream"
+                    >
+                      {item.doc.label} (PDF)
+                      <ArrowUpRight className="h-4 w-4" aria-hidden />
+                    </a>
+                  )}
                 </article>
               </Reveal>
             );
